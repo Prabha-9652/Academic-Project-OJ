@@ -1,19 +1,16 @@
-# RUET-OJ
+# OJ
 
-[RUET OJ](http://ruetoj-ruetoj.1d35.starter-us-east-1.openshiftapps.com/) is the 1st Open Source Online Judge 
-Platform Of Bangladesh .
+[OJ] is an Open Source Online Judge 
+Platform
 
 
 
 # Developer
 
-[Ashadullah Shawon](https://www.facebook.com/ashadullah.shawon)
+[VIIT 2K15-19] CSE Batch 10
 
 
-# Live RUET-OJ 
-
-http://ruetoj-ruetoj.1d35.starter-us-east-1.openshiftapps.com/
-
+# Live OJ 
 
 # Languages
 
@@ -68,12 +65,12 @@ If you are using localhost then change configuration of config.php to
 $host="localhost";
 $user="root";
 $pass="";
-$db="reg";
+$db="liveroj";
 
 ```
 # More
 There is a windows version of this online judge with partial features. 
-https://github.com/shawon100/RUET-Virtual-Lab
+https://github.com/Prabha-9652/Academic-Project-OJ
 
 # Request
 This online judge project is for learning purpose. Do not use it for commercial purpose. If you modify credits of footer, then add this github repository link to footer.
