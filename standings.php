@@ -113,86 +113,42 @@ if(isset($_GET['id']))
     </tr>
     </thead>
     <tbody>
-
-
-
 <?php
-
-
 if(isset($_GET['id']))
 {
   $conid=$_GET['id'];
-  
-
-/*$sql="SELECT sname,SUM(status) AS Solved FROM ( SELECT * FROM submission WHERE cid='$conid' AND status='1'  GROUP BY  pbname,sname )T1 GROUP BY sname
-
-UNION ALL
-
-SELECT * FROM  (SELECT sname, SUM(status) As Solved  FROM submission WHERE cid='$conid' GROUP BY  sname)T2  HAVING Solved='0'
-ORDER BY `Solved`  DESC ";*/
-
-$sql="SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
-
-$send=mysqli_query($con,$sql);
-$i=0;
-while($row=mysqli_fetch_array($send))
-{
-  $i++;
-  echo "<tr><td>$i</td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td>$row[Solved]</td><td>$row[Points]</td><td><a href=\"contestsubmission.php?id=$conid&show=$row[sname]\"><div class=\"btn btn-primary btn-xs\">Show</td></tr>";
-}
-
+  $sql="SELECT sname, SUM(status) As Solved, SUM(point) As Points FROM submission Where cid='$conid' GROUP BY sname ORDER BY Solved DESC , Points DESC";
+  $send=mysqli_query($con,$sql);
+  $i=0;
+  while($row=mysqli_fetch_array($send))
+  {
+   $i++;
+   echo "<tr><td>$i</td><td><a href=\"profile.php?user=$row[sname]\">$row[sname]</a></td><td>$row[Solved]</td><td>$row[Points]</td><td><a href=\"contestsubmission.php?id=$conid&show=$row[sname]\"><div class=\"btn btn-primary btn-xs\">Show</td></tr>";
+  }
   echo "</tbody>
 </table>
 </div><br><br><br><br><br>";
-
- 
-
 }
 ?>
 </div>
-
 <div class="col-sm-2">
-
 </div>
 </div>
 </div>
 </div><br><br><br>
-
 <div class="area">
 <div class="well foot">
 <div class="row area">
 <div class="col-sm-3">
 </div>
-
 <div class="col-sm-5">
-
-
-
-
 <div class="col-sm-4">
 <?php
-
 require_once("time.php");
-
 ?>
 </div>
 </div>
 </div>
 </div>
-
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
