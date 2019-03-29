@@ -101,14 +101,10 @@ if($st=="Teacher" || $st=="Problem Setter" || $st=="Developer")
 <div class="row log">
 
 <?php
-
 if(isset($_GET['user']))
 {
-
    $username=$data;
-   
 }
-
 $ac="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Accepted' and sname='$us'";
 $wa="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Wrong Answer' and sname='$us'";
 $tle="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Time Limit Exceed' and sname='$us'";
@@ -116,49 +112,23 @@ $tle="SELECT COUNT(verdict) AS verdict FROM submissions where verdict='Time Limi
 $s1=mysqli_query($con,$ac);
 $s2=mysqli_query($con,$wa);
 $s3=mysqli_query($con,$tle);
-
-//$nac=mysqli_fetch_array($s1);
-//$nwa=mysqli_fetch_array($s2);
-//$ntle=mysqli_fetch_array($s3);
-
 $d=array();
 $result=array();
-
-
-
-//$data[]=$nwa['verdict'];
-//$data[]=$ntle['verdict'];
-
-
-
-
 foreach($s1 as $nac)
 {
   $d[]=$nac;
   //$i++;
 }
-
-
 foreach($s2 as $nwa)
 {
   $d[]=$nwa;
-  //$i++;
 }
-
 foreach($s3 as $ntle)
 {
   $d[]=$ntle;
-  //$i++;
 }
-
-
 json_encode($d);
-
 $dd=$d;
-
-
-//echo "$username";
-
 ?>
 
 <script type="text/javascript">
@@ -171,33 +141,11 @@ $(document).ready(function(){
                var wa=[];
                var tle=[];
                var obj;
-               
-
               console.log(data);
-
               verdicts.push("User's Statistics");
-              //verdicts.push("Wrong Answer");
-              //verdicts.push("Time Limit Exceed");
-
-              
-              
-              //console.log(data);
-              
-
-               
-                  
               ac.push(data[0].verdict);
               wa.push(data[1].verdict);
               tle.push(data[2].verdict);
-
-                   //console.log(data[i].verdict);
-
-               
-               
-               
-
-               
-
                var chartdata={
                     labels:verdicts,
                     datasets:[
@@ -224,17 +172,10 @@ $(document).ready(function(){
                           hoverBackgroundColor:'blue',
                           data:tle,
                       }
-                      
-
-
-
-
                     ]
                };
-
                var ctx=$('#mycanvas');
                var barGraph=new Chart(ctx,{
-
                      type:'bar',
                      responsive:true,
                      data:chartdata,
@@ -243,18 +184,13 @@ $(document).ready(function(){
                           yAxes: [{
                             ticks: {
                               beginAtZero: true,
-                              
                               callback: function(value) {if (value % 1 === 0) {return value;}}
                             }
                           }]
                         }
                       }
-
                });
-      
-    
 });
-
 </script>
 
 
@@ -267,22 +203,6 @@ $(document).ready(function(){
 $sql="SELECT * FROM user WHERE name='$username'";
 $send=mysqli_query($con,$sql);
 $row=mysqli_fetch_array($send);
-
-
-/*$ts="SELECT DISTINCT sname, COUNT(verdict) AS verdict FROM ( SELECT * FROM submission where verdict='Accepted' and sname='$username' GROUP BY pbname, sname)T1 GROUP BY sname";
-
-$sts=mysqli_query($con,$ts);
-
-$solved=mysqli_fetch_array($sts);
-
-$tsolved=$solved['verdict'];
-
-if($tsolved=="")
-{
-   $tsolved=0;
-}
-*/
-
 ?>
 
 
@@ -317,9 +237,7 @@ if($tsolved=="")
   <div id="chart-container">
   <canvas id="mycanvas"></canvas>
 
-  </div><br>
-
-  <!--<div class="alert alert-success"><?php echo "<b>$username's Total Solved Problem = $tsolved</b>" ;?></div><br>--><br><br>
+  </div><br><br><br>
   
   <h3 style="text-align:center;"><?php  echo"$username's Contest History"?></h3><br><br>
 
